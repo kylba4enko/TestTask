@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-final class TransactionsViewModel {
+final class TransactionsListViewModel {
     
     @Published private(set) var currency: Currency = .btc
     @Published private(set) var balance: Double = 0

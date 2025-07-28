@@ -21,8 +21,8 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let transactionsViewModel = TransactionsViewModel()
-        let transactionsViewController = TransactionsViewController(viewModel: transactionsViewModel)
+        let transactionsViewModel = TransactionsListViewModel()
+        let transactionsViewController = TransactionsListViewController(viewModel: transactionsViewModel)
         rootNavigationController.viewControllers = [transactionsViewController]
     }
 }

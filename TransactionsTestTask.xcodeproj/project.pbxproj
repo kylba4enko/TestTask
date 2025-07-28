@@ -14,7 +14,7 @@
 		0DF1D1472D22DD4A001626E7 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF1D1462D22DD44001626E7 /* AnalyticsService.swift */; };
 		1CA3B6562D22B0F500176711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3B6552D22B0F500176711 /* AppDelegate.swift */; };
 		1CA3B6582D22B0F500176711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3B6572D22B0F500176711 /* SceneDelegate.swift */; };
-		1CA3B65A2D22B0F500176711 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3B6592D22B0F500176711 /* TransactionsViewController.swift */; };
+		1CA3B65A2D22B0F500176711 /* TransactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3B6592D22B0F500176711 /* TransactionsListViewController.swift */; };
 		1CA3B6602D22B0F500176711 /* TransactionsTestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3B65E2D22B0F500176711 /* TransactionsTestTask.xcdatamodeld */; };
 		1CA3B6622D22B0F600176711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CA3B6612D22B0F600176711 /* Assets.xcassets */; };
 		1CA3B6652D22B0F600176711 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1CA3B6642D22B0F600176711 /* Base */; };
@@ -24,8 +24,9 @@
 		FFB0D2A22E3775C70047FFB8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A12E3775C70047FFB8 /* Transaction.swift */; };
 		FFB0D2A52E3778F00047FFB8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A42E3778F00047FFB8 /* AppCoordinator.swift */; };
 		FFB0D2A72E379D0E0047FFB8 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A62E379D0E0047FFB8 /* TransactionTableViewCell.swift */; };
-		FFB0D2A92E379FA80047FFB8 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A82E379FA80047FFB8 /* TransactionsViewModel.swift */; };
+		FFB0D2A92E379FA80047FFB8 /* TransactionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A82E379FA80047FFB8 /* TransactionsListViewModel.swift */; };
 		FFB0D2AB2E37A53F0047FFB8 /* FormatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2AA2E37A53F0047FFB8 /* FormatService.swift */; };
+		FFB0D2AF2E37BC0F0047FFB8 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2AE2E37BC000047FFB8 /* AddTransactionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,7 @@
 		1CA3B6522D22B0F500176711 /* TransactionsTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransactionsTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA3B6552D22B0F500176711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CA3B6572D22B0F500176711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1CA3B6592D22B0F500176711 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		1CA3B6592D22B0F500176711 /* TransactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewController.swift; sourceTree = "<group>"; };
 		1CA3B65F2D22B0F500176711 /* TransactionsTestTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TransactionsTestTask.xcdatamodel; sourceTree = "<group>"; };
 		1CA3B6612D22B0F600176711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CA3B6642D22B0F600176711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,8 +68,9 @@
 		FFB0D2A12E3775C70047FFB8 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		FFB0D2A42E3778F00047FFB8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FFB0D2A62E379D0E0047FFB8 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
-		FFB0D2A82E379FA80047FFB8 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		FFB0D2A82E379FA80047FFB8 /* TransactionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewModel.swift; sourceTree = "<group>"; };
 		FFB0D2AA2E37A53F0047FFB8 /* FormatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatService.swift; sourceTree = "<group>"; };
+		FFB0D2AE2E37BC000047FFB8 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,10 +151,9 @@
 			children = (
 				FFB0D2832E3771EA0047FFB8 /* Models */,
 				0DF1D13E2D22DC2D001626E7 /* Services */,
-				FFB0D2A32E3778C10047FFB8 /* TransactionsScene */,
+				FFB0D2AD2E37B4BB0047FFB8 /* Scenes */,
 				1CA3B6552D22B0F500176711 /* AppDelegate.swift */,
 				1CA3B6572D22B0F500176711 /* SceneDelegate.swift */,
-				FFB0D2A42E3778F00047FFB8 /* AppCoordinator.swift */,
 				1CA3B6612D22B0F600176711 /* Assets.xcassets */,
 				1CA3B6632D22B0F600176711 /* LaunchScreen.storyboard */,
 				1CA3B6662D22B0F600176711 /* Info.plist */,
@@ -187,14 +188,32 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		FFB0D2A32E3778C10047FFB8 /* TransactionsScene */ = {
+		FFB0D2A32E3778C10047FFB8 /* TransactionsListScene */ = {
 			isa = PBXGroup;
 			children = (
 				FFB0D2A62E379D0E0047FFB8 /* TransactionTableViewCell.swift */,
-				1CA3B6592D22B0F500176711 /* TransactionsViewController.swift */,
-				FFB0D2A82E379FA80047FFB8 /* TransactionsViewModel.swift */,
+				1CA3B6592D22B0F500176711 /* TransactionsListViewController.swift */,
+				FFB0D2A82E379FA80047FFB8 /* TransactionsListViewModel.swift */,
 			);
-			path = TransactionsScene;
+			path = TransactionsListScene;
+			sourceTree = "<group>";
+		};
+		FFB0D2AC2E37B4A80047FFB8 /* AddTransactionScene */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0D2AE2E37BC000047FFB8 /* AddTransactionViewController.swift */,
+			);
+			path = AddTransactionScene;
+			sourceTree = "<group>";
+		};
+		FFB0D2AD2E37B4BB0047FFB8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0D2A42E3778F00047FFB8 /* AppCoordinator.swift */,
+				FFB0D2AC2E37B4A80047FFB8 /* AddTransactionScene */,
+				FFB0D2A32E3778C10047FFB8 /* TransactionsListScene */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,8 +347,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB0D29E2E3775B30047FFB8 /* Wallet.swift in Sources */,
-				FFB0D2A92E379FA80047FFB8 /* TransactionsViewModel.swift in Sources */,
+				FFB0D2A92E379FA80047FFB8 /* TransactionsListViewModel.swift in Sources */,
 				0D1540612D22EF5D00D6D63F /* AnalyticsEvent.swift in Sources */,
+				FFB0D2AF2E37BC0F0047FFB8 /* AddTransactionViewController.swift in Sources */,
 				FFB0D2A52E3778F00047FFB8 /* AppCoordinator.swift in Sources */,
 				FFB0D2A22E3775C70047FFB8 /* Transaction.swift in Sources */,
 				0DF1D1432D22DCD8001626E7 /* PerformOnce.swift in Sources */,
@@ -338,7 +358,7 @@
 				FFB0D2AB2E37A53F0047FFB8 /* FormatService.swift in Sources */,
 				0DF1D1472D22DD4A001626E7 /* AnalyticsService.swift in Sources */,
 				FFB0D2A72E379D0E0047FFB8 /* TransactionTableViewCell.swift in Sources */,
-				1CA3B65A2D22B0F500176711 /* TransactionsViewController.swift in Sources */,
+				1CA3B65A2D22B0F500176711 /* TransactionsListViewController.swift in Sources */,
 				1CA3B6562D22B0F500176711 /* AppDelegate.swift in Sources */,
 				1CA3B6582D22B0F500176711 /* SceneDelegate.swift in Sources */,
 				1CA3B6602D22B0F500176711 /* TransactionsTestTask.xcdatamodeld in Sources */,

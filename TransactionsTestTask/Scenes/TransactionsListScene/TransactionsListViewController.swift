@@ -1,13 +1,8 @@
-//
-//  ViewController.swift
-//  TransactionsTestTask
-//
-//
 
 import UIKit
 import Combine
 
-final class TransactionsViewController: UIViewController {
+final class TransactionsListViewController: UIViewController {
     
     private let balanceLabel: UILabel = {
         let label = UILabel()
@@ -48,10 +43,10 @@ final class TransactionsViewController: UIViewController {
         return table
     }()
     
-    private let viewModel: TransactionsViewModel
+    private let viewModel: TransactionsListViewModel
     private var cancellables = Set<AnyCancellable>()
     
-    init(viewModel: TransactionsViewModel) {
+    init(viewModel: TransactionsListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -159,7 +154,7 @@ final class TransactionsViewController: UIViewController {
     }
 }
 
-extension TransactionsViewController: UITableViewDataSource, UITableViewDelegate {
+extension TransactionsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.groupedTransactions.count

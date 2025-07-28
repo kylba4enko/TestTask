@@ -10,7 +10,7 @@ import CoreData
 
 final class CurrencyRate: NSManagedObject {
     @NSManaged public var date: Date
-    @NSManaged public var currency: String
     @NSManaged public var rate: Double
+    @NSManaged public var currency: Currency
     @NSManaged public var id: UUID
 }

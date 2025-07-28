@@ -12,12 +12,21 @@ final class Transaction: NSManagedObject {
     @NSManaged public var id: UUID
     @NSManaged public var date: Date
     @NSManaged public var amount: Double
-    @NSManaged public var category: Int16
-    @NSManaged public var type: Int16
+    @NSManaged public var category: TransactionCategory
+    @NSManaged public var type: TransactionType
     @NSManaged public var wallet: Wallet
+    
+    var isIncome: Bool {
+        type == .income
+    }
+    
+    var currency: Currency {
+        wallet.currency
+    }
 }
 
-enum TransactionCategory: Int, CaseIterable {
+@objc
+enum TransactionCategory: Int16, CaseIterable {
     case groceries
     case taxi
     case electronics
@@ -40,7 +49,8 @@ enum TransactionCategory: Int, CaseIterable {
     }
 }
 
-enum TransactionType: Int {
+@objc
+enum TransactionType: Int16 {
     case income
     case expense
     

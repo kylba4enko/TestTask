@@ -3,6 +3,8 @@ import Combine
 
 final class TransactionsListViewModel {
     
+    private weak var coordinator: TransactionsListCoordinator?
+    
     @Published private(set) var currency: Currency = .btc
     @Published private(set) var balance: Double = 0
     @Published private(set) var coinRate: Double = 0
@@ -11,7 +13,8 @@ final class TransactionsListViewModel {
 
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(coordinator: TransactionsListCoordinator?) {
+        self.coordinator = coordinator
         $transactions
             .map { txs in
                 let grouped = Dictionary(grouping: txs) { tx in
@@ -35,4 +38,11 @@ final class TransactionsListViewModel {
     
     func loadInitialData() {
     }
-} 
+    
+    func addTransaction() {
+        coordinator?.addTransaction { transaction in
+            guard transaction.amount > .zero else { return }
+            
+        }
+    }
+}

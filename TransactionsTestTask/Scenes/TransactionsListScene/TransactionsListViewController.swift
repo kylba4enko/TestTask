@@ -151,6 +151,7 @@ final class TransactionsListViewController: UIViewController {
     }
     
     @objc private func didTapAddTransaction() {
+        viewModel.addTransaction()
     }
 }
 

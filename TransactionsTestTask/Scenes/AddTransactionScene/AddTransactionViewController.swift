@@ -7,7 +7,11 @@
 
 import UIKit
 
+typealias NewTransaction = (amount: Double, category: TransactionCategory)
+
 final class AddTransactionViewController: UIViewController {
+    
+    var onAddTransaction: ((NewTransaction) -> Void)?
     
     private let amountTextField: UITextField = {
         let textField = UITextField()
@@ -66,5 +70,6 @@ final class AddTransactionViewController: UIViewController {
         let amountText = amountTextField.text ?? ""
         let amount = Double(amountText) ?? 0
         let category = TransactionCategory.allCases[categorySegmented.selectedSegmentIndex]
+        onAddTransaction?(NewTransaction(amount, category))
     }
 }

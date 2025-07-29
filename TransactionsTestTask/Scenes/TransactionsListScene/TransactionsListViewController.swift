@@ -62,7 +62,7 @@ final class TransactionsListViewController: UIViewController {
         setupActions()
         setupTableView()
         bindViewModel()
-        viewModel.updateData()
+        viewModel.refreshWallet()
     }
     
     private func setupUI() {
@@ -137,17 +137,15 @@ final class TransactionsListViewController: UIViewController {
     }
     
     @objc private func didTapTopUp() {
-        let alert = UIAlertController(title: "Top Up", message: "Enter amount in \(viewModel.currency.abbreviation)", preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = "Amount"
-            textField.keyboardType = .decimalPad
-        }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self, weak alert] _ in
-            guard let amountText = alert?.textFields?.first?.text, let amount = Double(amountText), amount > 0 else { return }
+        let topUpAlert = UserAlertFactory.topUp(currency: viewModel.currency) { [weak self] text in
+            guard let amount = text.asDouble, amount > 0 else {
+                let amountAlert = UserAlertFactory.invalidAmount
+                self?.present(amountAlert.viewController, animated: true)
+                return
+            }
             self?.viewModel.topUp(amount: amount)
-        }))
-        present(alert, animated: true, completion: nil)
+        }
+        present(topUpAlert.viewController, animated: true)
     }
     
     @objc private func didTapAddTransaction() {
@@ -178,5 +176,9 @@ extension TransactionsListViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let date = viewModel.groupedTransactions[section].date
         return FormattService.formattDay(date)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel.loadTransactions(for: indexPath)
     }
 }

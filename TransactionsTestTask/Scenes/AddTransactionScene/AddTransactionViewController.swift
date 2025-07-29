@@ -72,8 +72,11 @@ final class AddTransactionViewController: UIViewController {
     }
     
     @objc private func didTapAdd() {
-        let amountText = amountTextField.text ?? ""
-        let amount = Double(amountText) ?? 0
+        guard let amount = amountTextField.text.asDouble, amount > 0 else {
+            let amountAlert = UserAlertFactory.invalidAmount
+            present(amountAlert.viewController, animated: true)
+            return
+        }
         let category = categories[selectedCategoryIndex]
         onAddTransaction?(NewTransaction(amount, category))
     }

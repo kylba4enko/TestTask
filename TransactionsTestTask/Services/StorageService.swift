@@ -12,6 +12,7 @@ protocol StorageService {
     func fetchWallet(currency: Currency) -> Wallet?
     func addWallet(currency: Currency) -> Wallet
     
+    func fetchTransactionsCount(for wallet: Wallet) -> Int
     func fetchTransactions(for wallet: Wallet, offset: Int, limit: Int) -> [Transaction]
     func addTransaction(amount: Double, category: TransactionCategory?, to wallet: Wallet)
     
@@ -86,6 +87,17 @@ final class StorageServiceImpl: StorageService {
         return newWallet
     }
     
+    func fetchTransactionsCount(for wallet: Wallet) -> Int {
+        let request = NSFetchRequest<Transaction>(entityName: "Transaction")
+        request.predicate = NSPredicate(format: "wallet == %@", wallet)
+        do {
+            return try context.count(for: request)
+        } catch {
+            // log error
+        }
+        return 0
+    }
+
     func fetchTransactions(for wallet: Wallet, offset: Int, limit: Int) -> [Transaction] {
         let request = NSFetchRequest<Transaction>(entityName: "Transaction")
         request.predicate = NSPredicate(format: "wallet == %@", wallet)

@@ -9,10 +9,9 @@ import Foundation
 import CoreData
 
 final class Wallet: NSManagedObject {
-    @NSManaged public var balance: Double
     @NSManaged public var currency: Currency
     @NSManaged public var id: UUID
-    @NSManaged public var transactions: NSSet
+    @NSManaged public var transactions: Set<Transaction>?
 }
 
 @objc

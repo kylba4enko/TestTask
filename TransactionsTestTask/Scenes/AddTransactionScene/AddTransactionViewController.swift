@@ -22,11 +22,10 @@ final class AddTransactionViewController: UIViewController {
         return textField
     }()
     
-    private let categorySegmented: UISegmentedControl = {
-        let control = UISegmentedControl(items: TransactionCategory.allCases.map { $0.title })
-        control.selectedSegmentIndex = 0
-        control.translatesAutoresizingMaskIntoConstraints = false
-        return control
+    private let categoryPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
     }()
     
     private let addButton: UIButton = {
@@ -37,16 +36,21 @@ final class AddTransactionViewController: UIViewController {
         return button
     }()
     
+    private let categories = TransactionCategory.allCases
+    private var selectedCategoryIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
         addButton.addTarget(self, action: #selector(didTapAdd), for: .touchUpInside)
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
     }
     
     private func setupUI() {
         view.addSubview(amountTextField)
-        view.addSubview(categorySegmented)
+        view.addSubview(categoryPicker)
         view.addSubview(addButton)
         
         NSLayoutConstraint.activate([
@@ -55,11 +59,12 @@ final class AddTransactionViewController: UIViewController {
             amountTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             amountTextField.heightAnchor.constraint(equalToConstant: 48),
             
-            categorySegmented.topAnchor.constraint(equalTo: amountTextField.bottomAnchor, constant: 32),
-            categorySegmented.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            categorySegmented.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            categoryPicker.topAnchor.constraint(equalTo: amountTextField.bottomAnchor, constant: 32),
+            categoryPicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            categoryPicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            categoryPicker.heightAnchor.constraint(equalToConstant: 120),
             
-            addButton.topAnchor.constraint(equalTo: categorySegmented.bottomAnchor, constant: 48),
+            addButton.topAnchor.constraint(equalTo: categoryPicker.bottomAnchor, constant: 48),
             addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             addButton.heightAnchor.constraint(equalToConstant: 48)
@@ -69,7 +74,26 @@ final class AddTransactionViewController: UIViewController {
     @objc private func didTapAdd() {
         let amountText = amountTextField.text ?? ""
         let amount = Double(amountText) ?? 0
-        let category = TransactionCategory.allCases[categorySegmented.selectedSegmentIndex]
+        let category = categories[selectedCategoryIndex]
         onAddTransaction?(NewTransaction(amount, category))
+    }
+}
+
+extension AddTransactionViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        categories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        categories[row].rawValue
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategoryIndex = row
     }
 }

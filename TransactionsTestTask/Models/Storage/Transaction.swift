@@ -12,12 +12,11 @@ final class Transaction: NSManagedObject {
     @NSManaged public var id: UUID
     @NSManaged public var date: Date
     @NSManaged public var amount: Double
-    @NSManaged public var category: TransactionCategory
-    @NSManaged public var type: TransactionType
+    @NSManaged public var category: String?
     @NSManaged public var wallet: Wallet
     
     var isIncome: Bool {
-        type == .income
+        amount > 0
     }
     
     var currency: Currency {
@@ -25,41 +24,10 @@ final class Transaction: NSManagedObject {
     }
 }
 
-@objc
-enum TransactionCategory: Int16, CaseIterable {
-    case groceries
-    case taxi
-    case electronics
-    case restaurant
-    case other
-    
-    var title: String {
-        switch self {
-        case .groceries:
-            "Groceries"
-        case .taxi:
-            "Taxi"
-        case .electronics:
-            "Electronics"
-        case .restaurant:
-            "Restaurant"
-        case .other:
-            "Other"
-        }
-    }
-}
-
-@objc
-enum TransactionType: Int16 {
-    case income
-    case expense
-    
-    var title: String {
-        switch self {
-        case .income:
-            "Income"
-        case .expense:
-            "Outcome"
-        }
-    }
+enum TransactionCategory: String, CaseIterable {
+    case Groceries
+    case Taxi
+    case Electronics
+    case Restaurant
+    case Other
 }

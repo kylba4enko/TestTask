@@ -62,7 +62,7 @@ final class TransactionsListViewController: UIViewController {
         setupActions()
         setupTableView()
         bindViewModel()
-        viewModel.loadInitialData()
+        viewModel.updateData()
     }
     
     private func setupUI() {
@@ -117,14 +117,14 @@ final class TransactionsListViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] balance in
                 guard let self else { return }
-                balanceLabel.text = FormatService.formatCurrency(balance, currency: viewModel.currency)
+                balanceLabel.text = FormattService.formattCurrency(balance, currency: viewModel.currency)
             }
             .store(in: &cancellables)
         
         viewModel.$coinRate
             .receive(on: DispatchQueue.main)
             .sink { [weak self] rate in
-                self?.coinRateLabel.text = FormatService.formatCurrency(rate, currency: .usd)
+                self?.coinRateLabel.text = FormattService.formattCurrency(rate, currency: .usd)
             }
             .store(in: &cancellables)
         
@@ -177,6 +177,6 @@ extension TransactionsListViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let date = viewModel.groupedTransactions[section].date
-        return FormatService.formatDay(date)
+        return FormattService.formattDay(date)
     }
 }

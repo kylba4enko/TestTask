@@ -13,8 +13,6 @@
 /// Make this logic not depending on any module
 enum ServicesAssembler {
     
-    // MARK: - BitcoinRateService
-    
     static let bitcoinRateService: PerformOnce<BitcoinRateService> = {
         lazy var analyticsService = Self.analyticsService()
         
@@ -29,12 +27,14 @@ enum ServicesAssembler {
         
         return { service }
     }()
-    
-    // MARK: - AnalyticsService
-    
+
     static let analyticsService: PerformOnce<AnalyticsService> = {
         let service = AnalyticsServiceImpl()
-        
+        return { service }
+    }()
+    
+    static let storageService: PerformOnce<StorageService> = {
+        let service = StorageServiceImpl()
         return { service }
     }()
 }

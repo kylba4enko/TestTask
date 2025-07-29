@@ -25,8 +25,9 @@
 		FFB0D2A52E3778F00047FFB8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A42E3778F00047FFB8 /* AppCoordinator.swift */; };
 		FFB0D2A72E379D0E0047FFB8 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A62E379D0E0047FFB8 /* TransactionTableViewCell.swift */; };
 		FFB0D2A92E379FA80047FFB8 /* TransactionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2A82E379FA80047FFB8 /* TransactionsListViewModel.swift */; };
-		FFB0D2AB2E37A53F0047FFB8 /* FormatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2AA2E37A53F0047FFB8 /* FormatService.swift */; };
+		FFB0D2AB2E37A53F0047FFB8 /* FormattService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2AA2E37A53F0047FFB8 /* FormattService.swift */; };
 		FFB0D2AF2E37BC0F0047FFB8 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2AE2E37BC000047FFB8 /* AddTransactionViewController.swift */; };
+		FFB0D2B82E37C8A50047FFB8 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2B72E37C8A00047FFB8 /* StorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +70,9 @@
 		FFB0D2A42E3778F00047FFB8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FFB0D2A62E379D0E0047FFB8 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		FFB0D2A82E379FA80047FFB8 /* TransactionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewModel.swift; sourceTree = "<group>"; };
-		FFB0D2AA2E37A53F0047FFB8 /* FormatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatService.swift; sourceTree = "<group>"; };
+		FFB0D2AA2E37A53F0047FFB8 /* FormattService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattService.swift; sourceTree = "<group>"; };
 		FFB0D2AE2E37BC000047FFB8 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		FFB0D2B72E37C8A00047FFB8 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +112,8 @@
 		0DF1D13E2D22DC2D001626E7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FFB0D2AA2E37A53F0047FFB8 /* FormatService.swift */,
+				FFB0D2B72E37C8A00047FFB8 /* StorageService.swift */,
+				FFB0D2AA2E37A53F0047FFB8 /* FormattService.swift */,
 				0DF1D1412D22DCC3001626E7 /* Helpers */,
 				0DF1D13F2D22DC4B001626E7 /* ServicesAssembler.swift */,
 				0DF1D1442D22DCFF001626E7 /* BitcoinRateService.swift */,
@@ -353,9 +356,10 @@
 				FFB0D2A52E3778F00047FFB8 /* AppCoordinator.swift in Sources */,
 				FFB0D2A22E3775C70047FFB8 /* Transaction.swift in Sources */,
 				0DF1D1432D22DCD8001626E7 /* PerformOnce.swift in Sources */,
+				FFB0D2B82E37C8A50047FFB8 /* StorageService.swift in Sources */,
 				0DF1D1452D22DD06001626E7 /* BitcoinRateService.swift in Sources */,
 				FFB0D2A02E3775C00047FFB8 /* CurrencyRate.swift in Sources */,
-				FFB0D2AB2E37A53F0047FFB8 /* FormatService.swift in Sources */,
+				FFB0D2AB2E37A53F0047FFB8 /* FormattService.swift in Sources */,
 				0DF1D1472D22DD4A001626E7 /* AnalyticsService.swift in Sources */,
 				FFB0D2A72E379D0E0047FFB8 /* TransactionTableViewCell.swift in Sources */,
 				1CA3B65A2D22B0F500176711 /* TransactionsListViewController.swift in Sources */,

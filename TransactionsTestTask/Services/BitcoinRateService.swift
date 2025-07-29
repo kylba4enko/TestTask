@@ -14,7 +14,7 @@ protocol BitcoinRateService: AnyObject {
     var onRateUpdate: ((Double) -> Void)? { get set }
 }
 
-final class BitcoinRateServiceImpl {
+final class BitcoinRateServiceImpl: BitcoinRateService {
     
     var onRateUpdate: ((Double) -> Void)?
     
@@ -25,6 +25,3 @@ final class BitcoinRateServiceImpl {
     }
 }
 
-extension BitcoinRateServiceImpl: BitcoinRateService {
-    
-}

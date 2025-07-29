@@ -45,12 +45,10 @@ final class TransactionTableViewCell: UITableViewCell {
     }
     
     func configure(transaction: Transaction) {
-        timeLabel.text = FormatService.formatTime(transaction.date)
-        let sign = transaction.isIncome ? "+" : "-"
-        let formattedAmount = FormatService.formatCurrency(transaction.amount, currency: transaction.currency)
-        amountLabel.text = "\(sign) \(formattedAmount)"
+        timeLabel.text = FormattService.formattTime(transaction.date)
+        amountLabel.text = FormattService.formattCurrency(transaction.amount, currency: transaction.currency)
         amountLabel.textColor = transaction.isIncome ? .systemGreen : .systemRed
-        categoryLabel.text = transaction.category.title
+        categoryLabel.text = transaction.category
     }
     
     override func prepareForReuse() {

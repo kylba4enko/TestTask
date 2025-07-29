@@ -80,11 +80,11 @@ final class TransactionsListViewController: UIViewController {
         NSLayoutConstraint.activate([
             coinRateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             coinRateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            coinRateLabel.widthAnchor.constraint(equalToConstant: 100),
+            coinRateLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
             
-            balanceStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            balanceStack.topAnchor.constraint(equalTo: coinRateLabel.bottomAnchor, constant: 16),
             balanceStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            balanceStack.trailingAnchor.constraint(lessThanOrEqualTo: coinRateLabel.leadingAnchor, constant: -8),
+            balanceStack.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
             
             addTransactionButton.topAnchor.constraint(equalTo: balanceStack.bottomAnchor, constant: 24),
             addTransactionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

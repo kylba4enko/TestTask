@@ -30,6 +30,8 @@
 		FFB0D2B82E37C8A50047FFB8 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2B72E37C8A00047FFB8 /* StorageService.swift */; };
 		FFB0D2BE2E38E8A30047FFB8 /* UserAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2BD2E38E89D0047FFB8 /* UserAlert.swift */; };
 		FFB0D2C12E38EBF80047FFB8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2C02E38EBF20047FFB8 /* StringExtension.swift */; };
+		FFB0D2C42E3912ED0047FFB8 /* BitcoinRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2C32E3912DA0047FFB8 /* BitcoinRate.swift */; };
+		FFB0D2C62E392C470047FFB8 /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2C52E392C400047FFB8 /* AppModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		FFB0D2B72E37C8A00047FFB8 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		FFB0D2BD2E38E89D0047FFB8 /* UserAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlert.swift; sourceTree = "<group>"; };
 		FFB0D2C02E38EBF20047FFB8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		FFB0D2C32E3912DA0047FFB8 /* BitcoinRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRate.swift; sourceTree = "<group>"; };
+		FFB0D2C52E392C400047FFB8 /* AppModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 				0DF1D13E2D22DC2D001626E7 /* Services */,
 				FFB0D2AD2E37B4BB0047FFB8 /* Scenes */,
 				1CA3B6552D22B0F500176711 /* AppDelegate.swift */,
+				FFB0D2C52E392C400047FFB8 /* AppModule.swift */,
 				1CA3B6572D22B0F500176711 /* SceneDelegate.swift */,
 				1CA3B6612D22B0F600176711 /* Assets.xcassets */,
 				1CA3B6632D22B0F600176711 /* LaunchScreen.storyboard */,
@@ -180,6 +185,7 @@
 		FFB0D2832E3771EA0047FFB8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FFB0D2C22E3912C70047FFB8 /* Backend */,
 				FFB0D2842E3771F80047FFB8 /* Storage */,
 			);
 			path = Models;
@@ -231,6 +237,14 @@
 				FFB0D2C02E38EBF20047FFB8 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FFB0D2C22E3912C70047FFB8 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0D2C32E3912DA0047FFB8 /* BitcoinRate.swift */,
+			);
+			path = Backend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,10 +388,12 @@
 				0DF1D1452D22DD06001626E7 /* BitcoinRateService.swift in Sources */,
 				FFB0D2A02E3775C00047FFB8 /* CurrencyRate.swift in Sources */,
 				FFB0D2AB2E37A53F0047FFB8 /* FormattService.swift in Sources */,
+				FFB0D2C62E392C470047FFB8 /* AppModule.swift in Sources */,
 				0DF1D1472D22DD4A001626E7 /* AnalyticsService.swift in Sources */,
 				FFB0D2C12E38EBF80047FFB8 /* StringExtension.swift in Sources */,
 				FFB0D2A72E379D0E0047FFB8 /* TransactionTableViewCell.swift in Sources */,
 				1CA3B65A2D22B0F500176711 /* TransactionsListViewController.swift in Sources */,
+				FFB0D2C42E3912ED0047FFB8 /* BitcoinRate.swift in Sources */,
 				1CA3B6562D22B0F500176711 /* AppDelegate.swift in Sources */,
 				1CA3B6582D22B0F500176711 /* SceneDelegate.swift in Sources */,
 				FFB0D2BE2E38E8A30047FFB8 /* UserAlert.swift in Sources */,

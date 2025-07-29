@@ -6,9 +6,8 @@
 
 import Foundation
 
-struct AnalyticsEvent {
-    
+struct AnalyticsEvent: Hashable {
     let name: String
     let parameters: [String: String]
-    let date: Date
+    let date: Date = .now
 }

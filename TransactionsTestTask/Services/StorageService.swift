@@ -6,8 +6,11 @@
 //
 
 import CoreData
+import Combine
 
 protocol StorageService {
+    var errorPublisher: AnyPublisher<Error, Never> { get }
+    
     func fetchWalletBalance(_ wallet: Wallet) -> Double
     func fetchWallet(currency: Currency) -> Wallet?
     func addWallet(currency: Currency) -> Wallet
@@ -20,19 +23,29 @@ protocol StorageService {
     func addCurrencyRate(_ rate: Double, for currency: Currency)
 }
 
-final class StorageServiceImpl: StorageService {
+enum StorageServiceError: Error {
+    case unableToLocateModel
+}
 
+final class StorageServiceImpl: StorageService {
+    
+    var errorPublisher: AnyPublisher<Error, Never> {
+        errorSubject.eraseToAnyPublisher()
+    }
+    
+    private let errorSubject = PassthroughSubject<Error, Never>()
     private let modelName = "TransactionsTestTask"
     
     private lazy var persistentContainer: NSPersistentContainer = {
         guard let url = Bundle.main.url(forResource: modelName, withExtension: "momd"),
             let model = NSManagedObjectModel(contentsOf: url) else {
-            fatalError("Unable to locate model")
+            errorSubject.send(StorageServiceError.unableToLocateModel)
+            fatalError("Unable to locate \(modelName)") // Just for testing
         }
         let container = NSPersistentContainer(name: modelName, managedObjectModel: model)
-        container.loadPersistentStores { _, error in
+        container.loadPersistentStores { [weak self] _, error in
             if let error {
-                fatalError("Unresolved error \(error)")
+                self?.errorSubject.send(error)
             }
         }
         return container
@@ -58,7 +71,7 @@ final class StorageServiceImpl: StorageService {
                 return total
             }
         } catch {
-            // log error
+            errorSubject.send(error)
         }
         return 0
     }
@@ -70,7 +83,7 @@ final class StorageServiceImpl: StorageService {
         do {
             return try context.fetch(request).first
         } catch {
-            // log error
+            errorSubject.send(error)
         }
         return nil
     }
@@ -82,7 +95,7 @@ final class StorageServiceImpl: StorageService {
         do {
             try context.save()
         } catch {
-            // log error
+            errorSubject.send(error)
         }
         return newWallet
     }
@@ -93,7 +106,7 @@ final class StorageServiceImpl: StorageService {
         do {
             return try context.count(for: request)
         } catch {
-            // log error
+            errorSubject.send(error)
         }
         return 0
     }
@@ -107,7 +120,7 @@ final class StorageServiceImpl: StorageService {
         do {
             return try context.fetch(request)
         } catch {
-            // log error
+            errorSubject.send(error)
         }
         return []
     }
@@ -117,12 +130,12 @@ final class StorageServiceImpl: StorageService {
         newTransaction.id = UUID()
         newTransaction.amount = amount
         newTransaction.category = category?.rawValue
-        newTransaction.date = Date()
+        newTransaction.date = .now
         newTransaction.wallet = wallet
         do {
             try context.save()
         } catch {
-            // log error
+            errorSubject.send(error)
         }
     }
     
@@ -134,7 +147,7 @@ final class StorageServiceImpl: StorageService {
         do {
             return try context.fetch(request).first
         } catch {
-            // log error
+            errorSubject.send(error)
         }
         return nil
     }
@@ -142,13 +155,13 @@ final class StorageServiceImpl: StorageService {
     func addCurrencyRate(_ rate: Double, for currency: Currency) {
         let newRate = CurrencyRate(context: context)
         newRate.id = UUID()
-        newRate.date = Date()
+        newRate.date = .now
         newRate.rate = rate
         newRate.currency = currency
         do {
             try context.save()
         } catch {
-            // log error
+            errorSubject.send(error)
         }
     }
 }

@@ -18,15 +18,19 @@ final class TransactionsListViewModel {
         storageService.fetchWallet(currency: currency) ?? storageService.addWallet(currency: currency)
     }()
     private let storageService: StorageService
+    private let bitcoinRateService: BitcoinRateService
     private var cancellables = Set<AnyCancellable>()
     
     init(coordinator: TransactionsListCoordinator?,
-         storageService: StorageService = ServicesAssembler.storageService()) {
+         storageService: StorageService = ServicesAssembler.storageService(),
+         bitcoinRateService: BitcoinRateService = ServicesAssembler.bitcoinRateService()) {
         
         self.coordinator = coordinator
         self.storageService = storageService
+        self.bitcoinRateService = bitcoinRateService
         
         listenForTransactions()
+        listenForRateUpdates()
     }
     
     func topUp(amount: Double) {
@@ -55,10 +59,6 @@ final class TransactionsListViewModel {
         }
     }
     
-    private func loadBalance() {
-        balance = storageService.fetchWalletBalance(wallet)
-    }
-    
     private func loadTransactions() {
         let olderTransactions = storageService.fetchTransactions(for: wallet,
                                                                  offset: transactions.count,
@@ -71,8 +71,15 @@ final class TransactionsListViewModel {
         refreshWallet()
     }
     
-    private func updateCoinRate(_ rate: Double) {
-        
+    private func loadBalance() {
+        balance = storageService.fetchWalletBalance(wallet)
+    }
+    
+    private func loadCurrencyRate() {
+        guard let rate = storageService.fetchCurrencyRate(for: currency)?.rate else {
+            return
+        }
+        coinRate = rate
     }
     
     private func listenForTransactions() {
@@ -86,5 +93,15 @@ final class TransactionsListViewModel {
                     .sorted { $0.date > $1.date }
             }
             .assign(to: &$groupedTransactions)
+    }
+    
+    private func listenForRateUpdates() {
+        bitcoinRateService.ratePublisher
+            .sink { [weak self] rate in
+                guard let self else { return }
+                self.storageService.addCurrencyRate(rate, for: currency)
+                self.loadCurrencyRate()
+            }
+            .store(in: &cancellables)
     }
 }

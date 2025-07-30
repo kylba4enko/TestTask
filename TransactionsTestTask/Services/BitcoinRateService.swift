@@ -23,12 +23,15 @@ final class BitcoinRateServiceImpl: BitcoinRateService {
         rateSubject.eraseToAnyPublisher()
     }
     
+    private let session: URLSession
     private let rateSubject = PassthroughSubject<Double, Never>()
     private var cancellable: Set<AnyCancellable> = []
     
+    // Choose another url because provided is not working
     private let apiPath = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
     
-    init(interval: TimeInterval = 60) {
+    init(session: URLSession = .shared, interval: TimeInterval = 60) {
+        self.session = session
         fetchBitcoinRate()
         Timer
             .publish(every: interval, on: .main, in: .common)
@@ -43,7 +46,7 @@ final class BitcoinRateServiceImpl: BitcoinRateService {
         guard let apiURL = URL(string: apiPath) else {
             return
         }
-        URLSession.shared.dataTaskPublisher(for: apiURL)
+        session.dataTaskPublisher(for: apiURL)
             .map(\.data)
             .decode(type: BitcoinRate.self, decoder: JSONDecoder())
             .map(\.bitcoin.usd)

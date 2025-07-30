@@ -42,6 +42,7 @@ final class TransactionsListViewModel {
         transactions.removeAll()
         loadBalance()
         loadTransactions()
+        loadCurrencyRate()
     }
     
     func loadTransactions(for indexPath: IndexPath) {

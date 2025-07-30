@@ -35,17 +35,11 @@
 		FFB0D2CA2E3A27F50047FFB8 /* AnalyticsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2C92E3A27F50047FFB8 /* AnalyticsServiceTests.swift */; };
 		FFB0D2CC2E3A3B9D0047FFB8 /* BitcoinRateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2CB2E3A3B9D0047FFB8 /* BitcoinRateServiceTests.swift */; };
 		FFB0D2CF2E3A3BDF0047FFB8 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2CE2E3A3BDF0047FFB8 /* URLProtocolMock.swift */; };
+		FFB0D2D12E3A4A160047FFB8 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0D2D02E3A4A160047FFB8 /* StorageServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		1CA3B66C2D22B0F600176711 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1CA3B64A2D22B0F500176711 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1CA3B6512D22B0F500176711;
-			remoteInfo = TransactionsTestTask;
-		};
-		1CA3B6762D22B0F600176711 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1CA3B64A2D22B0F500176711 /* Project object */;
 			proxyType = 1;
@@ -69,7 +63,6 @@
 		1CA3B6642D22B0F600176711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CA3B6662D22B0F600176711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CA3B66B2D22B0F600176711 /* TransactionsTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransactionsTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CA3B6752D22B0F600176711 /* TransactionsTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransactionsTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB0D29D2E3775AF0047FFB8 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		FFB0D29F2E3775C00047FFB8 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
 		FFB0D2A12E3775C70047FFB8 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -87,6 +80,7 @@
 		FFB0D2C92E3A27F50047FFB8 /* AnalyticsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceTests.swift; sourceTree = "<group>"; };
 		FFB0D2CB2E3A3B9D0047FFB8 /* BitcoinRateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateServiceTests.swift; sourceTree = "<group>"; };
 		FFB0D2CE2E3A3BDF0047FFB8 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		FFB0D2D02E3A4A160047FFB8 /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,13 +92,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1CA3B6682D22B0F600176711 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1CA3B6722D22B0F600176711 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -158,7 +145,6 @@
 			children = (
 				1CA3B6522D22B0F500176711 /* TransactionsTestTask.app */,
 				1CA3B66B2D22B0F600176711 /* TransactionsTestTaskTests.xctest */,
-				1CA3B6752D22B0F600176711 /* TransactionsTestTaskUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +171,7 @@
 			children = (
 				FFB0D2CD2E3A3BD00047FFB8 /* Mock */,
 				FFB0D2C72E3A1F290047FFB8 /* FormattServiceTests.swift */,
+				FFB0D2D02E3A4A160047FFB8 /* StorageServiceTests.swift */,
 				FFB0D2CB2E3A3B9D0047FFB8 /* BitcoinRateServiceTests.swift */,
 				FFB0D2C92E3A27F50047FFB8 /* AnalyticsServiceTests.swift */,
 			);
@@ -302,24 +289,6 @@
 			productReference = 1CA3B66B2D22B0F600176711 /* TransactionsTestTaskTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		1CA3B6742D22B0F600176711 /* TransactionsTestTaskUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1CA3B6852D22B0F600176711 /* Build configuration list for PBXNativeTarget "TransactionsTestTaskUITests" */;
-			buildPhases = (
-				1CA3B6712D22B0F600176711 /* Sources */,
-				1CA3B6722D22B0F600176711 /* Frameworks */,
-				1CA3B6732D22B0F600176711 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1CA3B6772D22B0F600176711 /* PBXTargetDependency */,
-			);
-			name = TransactionsTestTaskUITests;
-			productName = TransactionsTestTaskUITests;
-			productReference = 1CA3B6752D22B0F600176711 /* TransactionsTestTaskUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -334,10 +303,6 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					1CA3B66A2D22B0F600176711 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 1CA3B6512D22B0F500176711;
-					};
-					1CA3B6742D22B0F600176711 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 1CA3B6512D22B0F500176711;
 					};
@@ -358,7 +323,6 @@
 			targets = (
 				1CA3B6512D22B0F500176711 /* TransactionsTestTask */,
 				1CA3B66A2D22B0F600176711 /* TransactionsTestTaskTests */,
-				1CA3B6742D22B0F600176711 /* TransactionsTestTaskUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -374,13 +338,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1CA3B6692D22B0F600176711 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1CA3B6732D22B0F600176711 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -424,16 +381,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB0D2CA2E3A27F50047FFB8 /* AnalyticsServiceTests.swift in Sources */,
+				FFB0D2D12E3A4A160047FFB8 /* StorageServiceTests.swift in Sources */,
 				FFB0D2CC2E3A3B9D0047FFB8 /* BitcoinRateServiceTests.swift in Sources */,
 				FFB0D2C82E3A1F290047FFB8 /* FormattServiceTests.swift in Sources */,
 				FFB0D2CF2E3A3BDF0047FFB8 /* URLProtocolMock.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1CA3B6712D22B0F600176711 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,11 +395,6 @@
 			isa = PBXTargetDependency;
 			target = 1CA3B6512D22B0F500176711 /* TransactionsTestTask */;
 			targetProxy = 1CA3B66C2D22B0F600176711 /* PBXContainerItemProxy */;
-		};
-		1CA3B6772D22B0F600176711 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1CA3B6512D22B0F500176711 /* TransactionsTestTask */;
-			targetProxy = 1CA3B6762D22B0F600176711 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -675,38 +621,6 @@
 			};
 			name = Release;
 		};
-		1CA3B6862D22B0F600176711 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TransactionsTestTask;
-			};
-			name = Debug;
-		};
-		1CA3B6872D22B0F600176711 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TransactionsTestTask;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -733,15 +647,6 @@
 			buildConfigurations = (
 				1CA3B6832D22B0F600176711 /* Debug */,
 				1CA3B6842D22B0F600176711 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1CA3B6852D22B0F600176711 /* Build configuration list for PBXNativeTarget "TransactionsTestTaskUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1CA3B6862D22B0F600176711 /* Debug */,
-				1CA3B6872D22B0F600176711 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

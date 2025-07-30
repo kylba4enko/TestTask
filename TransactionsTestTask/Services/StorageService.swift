@@ -34,15 +34,22 @@ final class StorageServiceImpl: StorageService {
     }
     
     private let errorSubject = PassthroughSubject<Error, Never>()
-    private let modelName = "TransactionsTestTask"
+    private let storeName: String
     
+    private let isInMemoryStore: Bool
+
     private lazy var persistentContainer: NSPersistentContainer = {
-        guard let url = Bundle.main.url(forResource: modelName, withExtension: "momd"),
+        guard let url = Bundle.main.url(forResource: "TransactionsTestTask", withExtension: "momd"),
             let model = NSManagedObjectModel(contentsOf: url) else {
             errorSubject.send(StorageServiceError.unableToLocateModel)
-            fatalError("Unable to locate \(modelName)") // Just for testing
+            fatalError("Unable to locate \(storeName)") // Just for testing
         }
-        let container = NSPersistentContainer(name: modelName, managedObjectModel: model)
+        let container = NSPersistentContainer(name: storeName, managedObjectModel: model)
+        if isInMemoryStore {
+            let description = NSPersistentStoreDescription()
+            description.type = NSInMemoryStoreType
+            container.persistentStoreDescriptions = [description]
+        }
         container.loadPersistentStores { [weak self] _, error in
             if let error {
                 self?.errorSubject.send(error)
@@ -53,6 +60,11 @@ final class StorageServiceImpl: StorageService {
     
     private var context: NSManagedObjectContext {
         persistentContainer.viewContext
+    }
+    
+    init(isInMemoryStore: Bool = false, storeName: String = "TransactionsTestTask") {
+        self.isInMemoryStore = isInMemoryStore
+        self.storeName = storeName
     }
     
     func fetchWalletBalance(_ wallet: Wallet) -> Double {
@@ -162,6 +174,22 @@ final class StorageServiceImpl: StorageService {
             try context.save()
         } catch {
             errorSubject.send(error)
+        }
+    }
+    
+    /// For testing only, more details in StorageServiceTests
+    ///
+    func cleanup() {
+        let storeContainer = persistentContainer.persistentStoreCoordinator
+        storeContainer.persistentStores.forEach {
+            guard let url = $0.url else {
+                return
+            }
+            do {
+                try storeContainer.destroyPersistentStore(at: url, ofType: $0.type, options: nil)
+            } catch {
+                print("Error destroying persistent store: \(error)")
+            }
         }
     }
 }

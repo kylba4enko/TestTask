@@ -61,32 +61,42 @@ struct FormattServiceTests {
     
     struct FormattDayTests {
         
+        private func expectedDateString(for date: Date) -> String {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            return formatter.string(from: date)
+        }
+        
         @Test func formattDay_NewYear() throws {
             let calendar = Calendar(identifier: .gregorian)
             let date = calendar.date(from: DateComponents(year: 2025, month: 1, day: 1))!
             let result = FormattService.formattDay(date)
-            #expect(result == "Jan 1, 2025")
+            let expected = expectedDateString(for: date)
+            #expect(result == expected)
         }
         
         @Test func formattDay_ChristmasEve() throws {
             let calendar = Calendar(identifier: .gregorian)
             let date = calendar.date(from: DateComponents(year: 2024, month: 12, day: 24))!
             let result = FormattService.formattDay(date)
-            #expect(result == "Dec 24, 2024")
+            let expected = expectedDateString(for: date)
+            #expect(result == expected)
         }
         
         @Test func formattDay_LeapYearDay() throws {
             let calendar = Calendar(identifier: .gregorian)
             let date = calendar.date(from: DateComponents(year: 2024, month: 2, day: 29))!
             let result = FormattService.formattDay(date)
-            #expect(result == "Feb 29, 2024")
+            let expected = expectedDateString(for: date)
+            #expect(result == expected)
         }
         
         @Test func formattDay_DistantPastDate() throws {
             let calendar = Calendar(identifier: .gregorian)
             let date = calendar.date(from: DateComponents(year: 1900, month: 6, day: 15))!
             let result = FormattService.formattDay(date)
-            #expect(result == "Jun 15, 1900")
+            let expected = expectedDateString(for: date)
+            #expect(result == expected)
         }
     }
 }

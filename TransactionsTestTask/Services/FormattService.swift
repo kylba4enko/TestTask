@@ -12,7 +12,7 @@ struct FormattService {
             formatter.currencyCode = "USD"
             formatter.maximumFractionDigits = 2
             formatter.minimumFractionDigits = 2
-            return formatter.string(from: NSNumber(value: value)) ?? "$0.00"
+            return formatter.string(from: NSNumber(value: value)) ?? ""
         }
     }
     
